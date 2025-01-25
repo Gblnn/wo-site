@@ -4,7 +4,31 @@
 @tailwind components;
 @tailwind utilities;
 
+.nav-item {
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  /* background-color: rgba(100 100 100/ 20%); */
+  width: 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-active {
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  /* background-color: rgba(100 100 100/ 20%); */
+  width: 6rem;
+  display: flex;
+  justify-content: center;
+  background-color: orangered;
+}
+
 :root {
+  font-family: "ClashGrotesk-Variable", system-ui, -apple-system;
   line-height: 1.5;
   font-weight: 400;
 
@@ -133,4 +157,16 @@ button:focus-visible {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+}
+/* Custom Scrollbar */
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: orangered;
 }

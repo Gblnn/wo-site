@@ -1,7 +1,12 @@
+import Landing from "./sections/landing";
+
 export default function Home() {
   return (
     <>
-      <div></div>
+      <div>
+        <Landing />
+        <div style={{ height: "100svh" }}></div>
+      </div>
     </>
   );
 }
