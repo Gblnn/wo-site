@@ -22,7 +22,7 @@ export default function Navigation() {
           style={{
             width: "29ch",
             border: "",
-            background: "rgba(50 50 50/ 50%)",
+            background: "rgba(50 50 50/ 80%)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
             height: "3rem",
@@ -30,7 +30,7 @@ export default function Navigation() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "0.25rem",
+            padding: "0.35rem",
             transition: "0.5s",
           }}
         >
