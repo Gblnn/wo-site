@@ -13,6 +13,7 @@ export default function Header() {
           border: "",
           background: "rgba(100 100 100/ 20%)",
           backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
           position: "fixed",
           width: "100%",
           zIndex: "1",
