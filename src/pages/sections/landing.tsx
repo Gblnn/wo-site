@@ -13,6 +13,7 @@ export default function Landing() {
         }}
       >
         <img
+          alt="background"
           src="https://giffiles.alphacoders.com/222/222700.gif"
           width={"500rem"}
           style={{ opacity: 0.5 }}
@@ -27,6 +28,7 @@ export default function Landing() {
             lineHeight: "2.5rem",
             width: "",
             padding: "1.5rem",
+            color: "white",
           }}
         >
           Leading Distributor of{" "}

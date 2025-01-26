@@ -15,6 +15,7 @@ export default function Navigation() {
           justifyContent: "center",
           alignItems: "center",
           transition: "0.5s",
+          userSelect: "none",
         }}
       >
         <div
@@ -22,6 +23,8 @@ export default function Navigation() {
             width: "29ch",
             border: "",
             background: "rgba(100 100 100/ 20%)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
             height: "3rem",
             borderRadius: "1rem",
             display: "flex",

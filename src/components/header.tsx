@@ -48,6 +48,8 @@ export default function Header() {
               alignItems: "center",
               justifyContent: "center",
               flexFlow: "column",
+              color: "white",
+              mixBlendMode: "difference",
             }}
           >
             <p
@@ -55,6 +57,7 @@ export default function Header() {
                 fontWeight: "800",
                 fontSize: "2rem",
                 letterSpacing: "0.25rem",
+                mixBlendMode: "overlay",
               }}
             >
               Wahat Oman
