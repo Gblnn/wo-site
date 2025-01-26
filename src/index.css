@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.glow:hover {
+  box-shadow: 1px 1px 20px white;
+  border: 1px solid white;
+}
+
 .nav-item {
   padding-top: 0.45rem;
   padding-bottom: 0.45rem;

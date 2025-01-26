@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import RopeLights from "./ropelights";
+import moment from "moment";
 
 export default function Header() {
   const usenavigate = useNavigate();
   return (
-    <>
+    <div>
       <div
         style={{
           display: "flex",
@@ -75,7 +77,8 @@ export default function Header() {
             </p>
           </div>
         </div>
+        {moment().format("DD/MM") == "31/12" && <RopeLights />}
       </div>
-    </>
+    </div>
   );
 }
