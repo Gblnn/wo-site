@@ -11,7 +11,7 @@ export default function Header() {
           justifyContent: "center",
           height: "6.5rem",
           border: "",
-          background: "rgba(100 100 100/ 20%)",
+          background: "rgba(30 30 30/ 50%)",
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
           position: "fixed",

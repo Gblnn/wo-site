@@ -34,6 +34,7 @@ export default function Landing() {
           Leading Distributor of{" "}
           <b style={{ color: "orangered" }}>Industrial Gases</b> in Oman{" "}
         </p>
+
         <ChevronDown
           className="animate-bounce"
           width={"1.5rem"}

@@ -10,7 +10,7 @@ export default function Home() {
         transition={{ duration: 1, delay: 0.25 }}
       >
         <Landing />
-        <div style={{ height: "100svh" }}></div>
+        <div id="next" style={{ height: "100svh" }}></div>
       </motion.div>
     </>
   );
