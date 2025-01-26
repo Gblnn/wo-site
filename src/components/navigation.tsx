@@ -22,15 +22,16 @@ export default function Navigation() {
           style={{
             width: "29ch",
             border: "",
-            background: "rgba(100 100 100/ 20%)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
+            background: "rgba(50 50 50/ 50%)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
             height: "3rem",
             borderRadius: "1rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             padding: "0.25rem",
+            transition: "0.5s",
           }}
         >
           <p

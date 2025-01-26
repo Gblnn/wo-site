@@ -10,15 +10,16 @@ export default function Header() {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "",
           height: "6.5rem",
           border: "",
-          background: "rgba(30 30 30/ 50%)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
+          background: "rgba(30 30 30/ 80%)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           position: "fixed",
           width: "100%",
           zIndex: "1",
+          boxShadow: "1px 1px 20px black",
         }}
       >
         <div
@@ -26,7 +27,7 @@ export default function Header() {
           style={{
             cursor: "pointer",
             background: "rgba(100 100 100/ 20%)",
-
+            marginLeft: "1.5rem",
             display: "flex",
 
             paddingRight: "1rem",

@@ -27,12 +27,13 @@ export default function Landing() {
             fontWeight: "400",
             lineHeight: "2.5rem",
             width: "",
-            padding: "1.5rem",
+            padding: "2rem",
             color: "white",
           }}
         >
           Leading Distributor of{" "}
-          <b style={{ color: "orangered" }}>Industrial Gases</b> in 🇴🇲Oman{" "}
+          <b style={{ color: "orangered" }}>Industrial Gases</b> in {/* 🇴🇲 */}
+          Oman{" "}
         </p>
 
         <ChevronDown

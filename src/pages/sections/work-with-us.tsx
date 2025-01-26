@@ -20,7 +20,7 @@ export default function WorkWithUs() {
         style={{
           display: "flex",
           flexFlow: "column",
-          gap: "0.25rem",
+          gap: "0rem",
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -34,7 +34,7 @@ export default function WorkWithUs() {
         >
           Lets Get Acquainted
         </p>
-        <p style={{ opacity: "0.75" }}> </p>
+        {/* <p style={{ opacity: "0.75" }}></p> */}
         <br />
         <button
           onClick={() => usenavigate("/contact-us")}
