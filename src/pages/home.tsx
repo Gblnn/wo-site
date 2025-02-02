@@ -13,9 +13,8 @@ export default function Home() {
       >
         <Landing />
         <ServicesSection />
-        <div id="next" style={{ height: "100svh" }}></div>
+
         <WorkWithUs />
-        <div id="next" style={{ height: "100svh" }}></div>
       </motion.div>
     </>
   );

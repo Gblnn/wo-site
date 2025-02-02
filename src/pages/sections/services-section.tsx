@@ -94,7 +94,10 @@ export default function ServicesSection() {
                   }}
                 >
                   {products.map((e: any) => (
-                    <CarouselItem className="sm:basis-1/1 lg:basis-1/3">
+                    <CarouselItem
+                      key={e.id}
+                      className="sm:basis-1/1 lg:basis-1/3"
+                    >
                       <ServiceBox
                         key={e.id}
                         // onClick={() => usenavigate("/civil-engineering")}

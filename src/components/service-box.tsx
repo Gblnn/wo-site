@@ -50,11 +50,11 @@ export default function ServiceBox(props: Props) {
         <div style={{ display: "flex", border: "", justifyContent: "center" }}>
           <hr
             style={{
+              boxShadow: "1px 1px 10px black",
               border: "none",
               height: "0.25rem",
               width: "90%",
-              background:
-                "linear-gradient(90deg, orangered, orangered, orangered)",
+              background: "linear-gradient(90deg, brown, orangered, brown)",
             }}
           />
         </div>
@@ -86,7 +86,7 @@ export default function ServiceBox(props: Props) {
           >
             <p
               style={{
-                fontSize: "1.25rem",
+                fontSize: "1.15rem",
                 fontWeight: "600",
                 display: "flex",
                 gap: "0.5rem",

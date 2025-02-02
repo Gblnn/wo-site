@@ -92,6 +92,7 @@
 
 b {
   transition: 0.5s;
+  text-shadow: 1px 1px 30px orangered;
 }
 
 b:hover {

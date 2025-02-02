@@ -97,7 +97,7 @@ export default function Header() {
                 letterSpacing: "0.5rem",
                 fontSize: "0.75rem",
                 color: "orangered",
-                fontWeight: 800,
+                fontWeight: 900,
               }}
             >
               Industrial Gases

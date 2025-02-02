@@ -1,6 +1,8 @@
 import { ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Landing() {
+  const usenavigate = useNavigate();
   return (
     <>
       <div
@@ -33,8 +35,13 @@ export default function Landing() {
         >
           Leading Distributor of{" "}
           <b
+            onClick={() => usenavigate("/products")}
             className=""
-            style={{ color: "orangered", textShadow: "1px 1px 10px orangered" }}
+            style={{
+              color: "orangered",
+
+              cursor: "pointer",
+            }}
           >
             Industrial Gases
           </b>{" "}
