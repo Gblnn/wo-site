@@ -32,7 +32,13 @@ export default function Landing() {
           }}
         >
           Leading Distributor of{" "}
-          <b style={{ color: "orangered" }}>Industrial Gases</b> in {/* 🇴🇲 */}
+          <b
+            className=""
+            style={{ color: "orangered", textShadow: "1px 1px 10px orangered" }}
+          >
+            Industrial Gases
+          </b>{" "}
+          in {/* 🇴🇲 */}
           Oman{" "}
         </p>
 

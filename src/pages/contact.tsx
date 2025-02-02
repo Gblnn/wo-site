@@ -1,4 +1,4 @@
-export default function Products() {
+export default function Contact() {
   return (
     <div
       style={{
@@ -9,7 +9,7 @@ export default function Products() {
         alignItems: "center",
       }}
     >
-      <h1>Products</h1>
+      <h1>Contact</h1>
     </div>
   );
 }

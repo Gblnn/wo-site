@@ -1,6 +1,7 @@
 import Landing from "./sections/landing";
 import { motion } from "framer-motion";
 import WorkWithUs from "./sections/work-with-us";
+import ServicesSection from "./sections/services-section";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         transition={{ duration: 1, delay: 0.25 }}
       >
         <Landing />
+        <ServicesSection />
         <div id="next" style={{ height: "100svh" }}></div>
         <WorkWithUs />
         <div id="next" style={{ height: "100svh" }}></div>

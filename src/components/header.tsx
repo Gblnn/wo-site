@@ -1,33 +1,59 @@
+import { useState } from "react";
+import ConfettiExplosion from "react-confetti-explosion";
 import { useNavigate } from "react-router-dom";
-import RopeLights from "./ropelights";
-import moment from "moment";
+import MobileNav from "./mobile-nav";
 
 export default function Header() {
   const usenavigate = useNavigate();
+  const [explode] = useState(false);
+
   return (
-    <div>
+    <>
+      {/* <div
+        onClick={() => setExplode(!explode)}
+        style={{
+          cursor: "pointer",
+          border: "",
+          height: "2rem",
+          background: "linear-gradient(90deg, darkslateblue,midnightblue)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "0.5rem",
+          color: "white",
+        }}
+      >
+        <Cog width={"1rem"} color="red" />
+        <p style={{ fontSize: "0.8rem" }}>Site is under maintainence.</p>
+
+        <PartyPopper className="animate-pulse" width={"1rem"} color="salmon" />
+        <p style={{ fontSize: "0.8rem" }}>
+          Welcome New Year
+          <b style={{}}> 2025</b>
+        </p>
+      </div> */}
+
       <div
+        className="nav-bar"
         style={{
           display: "flex",
+          height: "6rem",
           alignItems: "center",
-          justifyContent: "",
-          height: "6.5rem",
-          border: "",
-          background: "rgba(30 30 30/ 80%)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
           position: "fixed",
+          top: 0,
           width: "100%",
-          zIndex: "1",
-          boxShadow: "1px 1px 20px black",
+          zIndex: 15,
+          boxShadow: "1px 1px 20px rgba(0 0 0/ 50%)",
+          border: "",
         }}
       >
         <div
+          className="title"
           onClick={() => usenavigate("/")}
           style={{
             cursor: "pointer",
             background: "rgba(100 100 100/ 20%)",
-            marginLeft: "1.5rem",
+            // marginLeft: "1.5rem",
             display: "flex",
 
             paddingRight: "1rem",
@@ -78,8 +104,39 @@ export default function Header() {
             </p>
           </div>
         </div>
-        {moment().format("DD/MM") == "31/12" && <RopeLights />}
+
+        <div className="nav" style={{ marginRight: "4rem" }}>
+          <MobileNav desktop />
+        </div>
       </div>
-    </div>
+      {/* <RopeLights /> */}
+      <div
+        style={{
+          border: "",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {explode && <ConfettiExplosion />}
+      </div>
+
+      <div
+        className="mobile-nav nav-bar"
+        style={{
+          width: "100%",
+          position: "fixed",
+          bottom: 0,
+          justifyContent: "center",
+          zIndex: 10,
+          fontSize: "1rem",
+          height: "4.5rem",
+          alignItems: "center",
+          boxShadow: "1px 1px 20px rgba(0 0 0/ 50%)",
+        }}
+      >
+        <MobileNav />
+      </div>
+    </>
   );
 }
