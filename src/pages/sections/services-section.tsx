@@ -9,12 +9,14 @@ import {
 import products from "@/products";
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
-import { Asterisk, ChevronDown, ChevronUp } from "lucide-react";
+import { Asterisk, ChevronDown, ChevronRight, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import ServiceBox from "../../components/service-box";
+import { useNavigate } from "react-router-dom";
 
 export default function ServicesSection() {
   const [expand, setExpand] = useState(true);
+  const usenavigate = useNavigate();
 
   return (
     <>
@@ -55,6 +57,7 @@ export default function ServicesSection() {
               }}
             >
               <Asterisk
+                className="animate-pulse"
                 color="orangered"
                 strokeWidth={"0.2rem"}
                 width={"2rem"}
@@ -108,39 +111,14 @@ export default function ServicesSection() {
                           <img
                             src={e.src}
                             style={{ height: "80%", objectFit: "cover" }}
-                            alt="Civil works"
+                            alt={e.name}
                           />
                         }
                       />
                     </CarouselItem>
                   ))}
-
-                  {/* <CarouselItem className="sm:basis-1/1 lg:basis-1/3">
-                    <ServiceBox
-                      title="Heavy Machinery"
-                      desc="We offer heavy construction machinery and equipment at the best market rates."
-                      icon={
-                        // <Truck width={"2.5rem"} height={"2.5rem"} />
-                        <img
-                          src={"heavy-machinery.png"}
-                          style={{ objectFit: "cover", height: "80%" }}
-                          alt="Heavy Machinery"
-                        />
-                      }
-                    />
-                  </CarouselItem> */}
-
-                  {/* <CarouselItem className="sm:basis-1/1 lg:basis-1/3">
-                                    <ServiceBox title="Manufacturing" desc="Our automotive engineers can cater to repair and maintainence of automobiles and heavy equipment" icon={<Factory width={"2.5rem"} height={"2.5rem"}/>}/>
-                                </CarouselItem> */}
                 </CarouselContent>
                 <CarouselNext />
-
-                {/* <div style={{border:"", display:'flex', justifyContent:"center", padding:"1.5rem"}}>
-                        <p style={{display:'flex', alignItems:'center', fontSize:"0.85rem", gap:"0.5rem"}}>
-                            Scroll to see more <ChevronRight width={"1.25rem"} color="crimson"/>
-                        </p>
-                        </div> */}
               </Carousel>
 
               <div
@@ -154,7 +132,7 @@ export default function ServicesSection() {
                   gap: "2rem",
                 }}
               >
-                {products.map((e: any) => (
+                {products.slice(0, 4).map((e: any) => (
                   <ServiceBox
                     key={e.id}
                     // onClick={() => usenavigate("/civil-engineering")}
@@ -169,7 +147,7 @@ export default function ServicesSection() {
                           border: "",
                           width: "80%",
                         }}
-                        alt="Civil works"
+                        alt={e.name}
                       />
                     }
                   />
@@ -216,12 +194,34 @@ export default function ServicesSection() {
                                 </button>
                             </a> */}
 
-            {/* <br/><br/>
-                <div style={{display:"flex", width:"100%", justifyContent:"center"}}>
-                <Button onClick={()=>usenavigate("/projects")} variant={"ghost"} style={{width:"32ch", display:"flex", gap:"0.5rem", alignItems:"center", alignSelf:"center", background:"rgba(100 100 100/ 10%)", boxShadow:"1px 1px 10px rgba(0 0 0/ 10%)"}}>See more Projects <ChevronRight width={"1rem"} color="crimson"/></Button>
-                </div>
-                
-                <br/><br/> */}
+            <br />
+            <br />
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                onClick={() => usenavigate("/products")}
+                variant={"ghost"}
+                style={{
+                  width: "32ch",
+                  display: "flex",
+                  gap: "0.5rem",
+                  alignItems: "center",
+                  alignSelf: "center",
+                  background: "rgba(100 100 100/ 10%)",
+                  boxShadow: "1px 1px 10px rgba(0 0 0/ 10%)",
+                }}
+              >
+                See All <ChevronRight width={"1rem"} color="orangered" />
+              </Button>
+            </div>
+
+            <br />
+            <br />
           </div>
         </div>
       </motion.div>

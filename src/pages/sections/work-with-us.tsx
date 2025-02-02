@@ -37,7 +37,7 @@ export default function WorkWithUs() {
         {/* <p style={{ opacity: "0.75" }}></p> */}
         <br />
         <button
-          onClick={() => usenavigate("/contact-us")}
+          onClick={() => usenavigate("/contact")}
           className="glow"
           style={{
             transition: "0.3s",

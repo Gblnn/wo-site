@@ -7,7 +7,7 @@ export default function RopeLights() {
         position: "absolute",
         height: "2rem",
         background: "url('lights.png')",
-        marginTop: "8.5rem",
+        marginTop: "6rem",
       }}
     ></div>
   );

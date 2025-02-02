@@ -2,6 +2,8 @@ import { useState } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useNavigate } from "react-router-dom";
 import MobileNav from "./mobile-nav";
+import RopeLights from "./ropelights";
+import moment from "moment";
 
 export default function Header() {
   const usenavigate = useNavigate();
@@ -52,7 +54,7 @@ export default function Header() {
           onClick={() => usenavigate("/")}
           style={{
             cursor: "pointer",
-            background: "rgba(100 100 100/ 20%)",
+            // background: "rgba(100 100 100/ 20%)",
             // marginLeft: "1.5rem",
             display: "flex",
 
@@ -71,7 +73,7 @@ export default function Header() {
             gap: "0.75rem",
           }}
         >
-          {/* <img src="/logo.png" width={"50rem"} /> */}
+          {/* <img src="/logo.png" width={"50rem"} alt="logo" /> */}
           <div
             style={{
               display: "flex",
@@ -109,7 +111,7 @@ export default function Header() {
           <MobileNav desktop />
         </div>
       </div>
-      {/* <RopeLights /> */}
+
       <div
         style={{
           border: "",
@@ -120,6 +122,7 @@ export default function Header() {
       >
         {explode && <ConfettiExplosion />}
       </div>
+      {moment().format("DD/MM") == "01/01" && <RopeLights />}
 
       <div
         className="mobile-nav nav-bar"

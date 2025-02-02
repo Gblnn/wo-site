@@ -203,10 +203,16 @@ export default function Footer() {
             gap: "3rem",
           }}
         >
-          {/* <img src="/sohar_star_logo.png" width={"40rem"}/> */}
           {/* <br /> */}
 
           <div>
+            <img
+              src="/logo.png"
+              width={"50rem"}
+              style={{ border: "" }}
+              alt="logo"
+            />
+            <div style={{ height: "0.75rem" }}></div>
             <p style={{ fontSize: "1rem", fontWeight: 600 }}>
               WAHAT OMAN INDUSTRIAL GASES
             </p>

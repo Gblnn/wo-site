@@ -54,7 +54,7 @@ export default function ServiceBox(props: Props) {
               border: "none",
               height: "0.25rem",
               width: "90%",
-              background: "linear-gradient(90deg, brown, orangered, brown)",
+              background: "linear-gradient(90deg, brown, orange, brown)",
             }}
           />
         </div>
@@ -90,6 +90,7 @@ export default function ServiceBox(props: Props) {
                 fontWeight: "600",
                 display: "flex",
                 gap: "0.5rem",
+                textShadow: "1px 1px 20px black",
               }}
             >
               {props.title}

@@ -26,8 +26,8 @@
   display: flex;
   justify-content: center;
   background-color: orangered;
-  color: white;
-  font-weight: 500;
+  color: wheat;
+  font-weight: 600;
   box-shadow: 1px 1px 10px orangered;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .red :hover {
-  box-shadow: 1px 1px 10px crimson;
+  box-shadow: 1px 1px 10px orangered;
 }
 
 .glow:hover {
@@ -110,7 +110,7 @@ p {
 }
 
 .link:hover {
-  color: crimson;
+  color: orangered;
 }
 
 .button {
@@ -143,7 +143,7 @@ p {
 }
 
 .title {
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 .bg {
