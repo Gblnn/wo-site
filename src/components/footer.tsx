@@ -5,9 +5,9 @@ import moment from "moment";
 export default function Footer() {
   return (
     <div
-      className="footer"
+      className="footer bg-emerald-900"
       style={{
-        background: "rgba(100 100 100/ 15%)",
+        boxShadow: "1px 1px 10px black",
         width: "100%",
         fontSize: "0.8rem",
         display: "flex",
@@ -70,11 +70,23 @@ export default function Footer() {
                     letterSpacing: "0.05rem",
                   }}
                 >
-                  <Smartphone color="orangered" width={"1rem"} />
-                  <a href="tel:98897837" className="ghost">
+                  <Smartphone
+                    color="orangered"
+                    width={"1rem"}
+                    strokeWidth={"0.2rem"}
+                  />
+                  <a
+                    href="tel:98897837"
+                    className="ghost"
+                    style={{ background: "rgba(100 100 100/ 40%)" }}
+                  >
                     98897837
                   </a>
-                  <a href="tel:98456245" className="ghost">
+                  <a
+                    href="tel:98456245"
+                    className="ghost"
+                    style={{ background: "rgba(100 100 100/ 40%)" }}
+                  >
                     98456245
                   </a>
                 </div>
@@ -86,7 +98,11 @@ export default function Footer() {
                     alignItems: "center",
                   }}
                 >
-                  <Phone color="orangered" width={"1rem"} />
+                  <Phone
+                    color="orangered"
+                    width={"1rem"}
+                    strokeWidth={"0.2rem"}
+                  />
                   <a href="tel:26701512" className="ghost">
                     26701512
                   </a>
@@ -103,7 +119,11 @@ export default function Footer() {
                     alignItems: "center",
                   }}
                 >
-                  <Mails color="orangered" width={"1rem"} />
+                  <Mails
+                    color="orangered"
+                    width={"1rem"}
+                    strokeWidth={"0.2rem"}
+                  />
                   <a
                     href="mailto:sales@wahatoman.com"
                     className="ghost"
@@ -120,7 +140,11 @@ export default function Footer() {
                     alignItems: "center",
                   }}
                 >
-                  <Mail color="orangered" width={"1rem"} />
+                  <Mail
+                    color="orangered"
+                    width={"1rem"}
+                    strokeWidth={"0.2rem"}
+                  />
                   <a
                     href="wahatoman@gmail.com"
                     className="ghost"
@@ -142,7 +166,11 @@ export default function Footer() {
                   gap: "0.5rem",
                 }}
               >
-                <LinkIcon width={"1rem"} color="orangered" />
+                <LinkIcon
+                  width={"1rem"}
+                  color="orangered"
+                  strokeWidth={"0.2rem"}
+                />
                 QUICK LINKS{" "}
               </p>
               <br />
@@ -241,7 +269,7 @@ export default function Footer() {
           wordSpacing: "0.1rem",
           border: "",
           padding: "1rem",
-          background: "rgba(100 100 100/ 10%)",
+          background: "rgba(100 100 100/ 40%)",
           width: "100%",
           justifyContent: "center",
         }}
