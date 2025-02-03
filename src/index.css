@@ -46,6 +46,10 @@
   user-select: none;
 }
 
+body {
+  transition: 0.3s;
+}
+
 :root {
   --nav-color: rgba(50 50 50/65%);
 }
@@ -255,6 +259,7 @@ p {
 
 .nav-bar {
   justify-content: space-between;
+  transition: 0.3s;
 }
 
 .cert {

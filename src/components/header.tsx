@@ -1,9 +1,9 @@
+import moment from "moment";
 import { useState } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useNavigate } from "react-router-dom";
 import MobileNav from "./mobile-nav";
 import RopeLights from "./ropelights";
-import moment from "moment";
 
 export default function Header() {
   const usenavigate = useNavigate();
@@ -17,7 +17,7 @@ export default function Header() {
           cursor: "pointer",
           border: "",
           height: "2rem",
-          background: "linear-gradient(90deg, darkslateblue,midnightblue)",
+          background: "linear-gradient(90deg, orangered,midnightblue)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -51,7 +51,10 @@ export default function Header() {
       >
         <div
           className="title"
-          onClick={() => usenavigate("/")}
+          onClick={() => {
+            usenavigate("/");
+            window.scrollTo(0, 0);
+          }}
           style={{
             cursor: "pointer",
             // background: "rgba(100 100 100/ 20%)",
@@ -73,7 +76,7 @@ export default function Header() {
             gap: "0.75rem",
           }}
         >
-          {/* <img src="/logo.png" width={"50rem"} alt="logo" /> */}
+          <img src="/logo.png" width={"50rem"} alt="logo" />
           <div
             style={{
               display: "flex",

@@ -12,6 +12,8 @@ export default function Landing() {
           alignItems: "center",
           height: "100svh",
           background: "black",
+          border: "",
+          top: 0,
         }}
       >
         <img
