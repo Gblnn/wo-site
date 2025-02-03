@@ -103,11 +103,19 @@ export default function Footer() {
                     width={"1rem"}
                     strokeWidth={"0.2rem"}
                   />
-                  <a href="tel:26701512" className="ghost">
+                  <a
+                    href="tel:26701512"
+                    className="ghost"
+                    style={{ background: "rgba(100 100 100/ 40%)" }}
+                  >
                     26701512
                   </a>
                   Tel :
-                  <a href="tel:26701633" className="ghost">
+                  <a
+                    href="tel:26701633"
+                    className="ghost"
+                    style={{ background: "rgba(100 100 100/ 40%)" }}
+                  >
                     {"26701633"}
                   </a>
                 </div>
@@ -127,7 +135,10 @@ export default function Footer() {
                   <a
                     href="mailto:sales@wahatoman.com"
                     className="ghost"
-                    style={{ width: "10rem" }}
+                    style={{
+                      background: "rgba(100 100 100/ 40%)",
+                      width: "10rem",
+                    }}
                   >
                     sales@wahatoman.com
                   </a>
@@ -148,7 +159,10 @@ export default function Footer() {
                   <a
                     href="wahatoman@gmail.com"
                     className="ghost"
-                    style={{ width: "10rem" }}
+                    style={{
+                      background: "rgba(100 100 100/ 40%)",
+                      width: "10rem",
+                    }}
                   >
                     wahatoman@gmail.com
                   </a>

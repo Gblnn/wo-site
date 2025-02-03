@@ -14,9 +14,16 @@
   width: 7rem;
   display: flex;
   justify-content: center;
+  transition: 0.3s;
+}
+
+.nav-item:hover {
+  font-weight: 600;
+  color: orangered;
 }
 
 .nav-active {
+  transition: 0.3s;
   padding-top: 0.45rem;
   padding-bottom: 0.45rem;
   border-radius: 0.75rem;
@@ -111,6 +118,7 @@ p {
 
 .link:hover {
   color: orangered;
+  font-weight: 500;
 }
 
 .button {
