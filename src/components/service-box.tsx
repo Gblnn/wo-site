@@ -79,7 +79,7 @@ export default function ServiceBox(props: Props) {
               flexFlow: "column",
               gap: "0.5rem",
               border: "",
-              height: "2.75rem",
+              height: "2.5rem",
               justifyContent: "center",
               alignItems: "center",
             }}

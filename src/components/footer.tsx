@@ -7,7 +7,7 @@ export default function Footer() {
     <div
       className="footer bg-emerald-900"
       style={{
-        boxShadow: "1px 1px 10px black",
+        // boxShadow: "1px 1px 10px black",
         width: "100%",
         fontSize: "0.8rem",
         display: "flex",
@@ -286,6 +286,7 @@ export default function Footer() {
           background: "rgba(100 100 100/ 40%)",
           width: "100%",
           justifyContent: "center",
+          boxShadow: "1px 1px 20px rgba(0 0 0/50%)",
         }}
       >
         <div
