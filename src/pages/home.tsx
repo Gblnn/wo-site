@@ -2,6 +2,8 @@ import Landing from "./sections/landing";
 import { motion } from "framer-motion";
 import WorkWithUs from "./sections/work-with-us";
 import ServicesSection from "./sections/services-section";
+import ProfileSection from "./sections/profile-section";
+import ClientsSection from "./sections/client-section";
 
 export default function Home() {
   return (
@@ -13,7 +15,18 @@ export default function Home() {
       >
         <Landing />
         <ServicesSection />
-
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "90svh",
+            padding: "1rem",
+          }}
+        >
+          <ProfileSection more />
+        </div>
+        <ClientsSection />
         <WorkWithUs />
       </motion.div>
     </>

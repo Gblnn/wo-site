@@ -32,14 +32,15 @@ export default function ServicesSection() {
             height: "",
             paddingTop: "4rem",
             boxShadow: "",
-            background: "",
+            background: "rgba(100 100 100/ 10%)",
+            border: "",
           }}
         >
           <div
             style={{
               margin: "1.5rem",
-              marginTop: "5rem",
-              marginBottom: "8rem",
+              marginTop: "",
+              marginBottom: "",
               border: "",
               width: "100%",
             }}

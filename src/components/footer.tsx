@@ -157,7 +157,7 @@ export default function Footer() {
                     strokeWidth={"0.2rem"}
                   />
                   <a
-                    href="wahatoman@gmail.com"
+                    href="mailto:wahatoman@gmail.com"
                     className="ghost"
                     style={{
                       background: "rgba(100 100 100/ 40%)",
