@@ -50,13 +50,14 @@ export default function Header() {
         }}
       >
         <div
-          className="title"
+          className="title active:bg-gray-800"
           onClick={() => {
             usenavigate("/");
             window.scrollTo(0, 0);
           }}
           style={{
             cursor: "pointer",
+
             // background: "rgba(100 100 100/ 20%)",
             // marginLeft: "1.5rem",
             display: "flex",

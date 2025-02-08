@@ -24,6 +24,7 @@ export default function About() {
             objectFit: "cover",
             background: "url('/cleaned_plant_int.jpg')",
             backgroundColor: "rgba(255 69 0/ 20%)",
+            backgroundBlendMode: "hard-light",
             backgroundPosition: "-5px -100px",
             display: "flex",
             justifyContent: "center",

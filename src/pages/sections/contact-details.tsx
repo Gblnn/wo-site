@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Lightbulb } from "lucide-react";
+import { AtSign, Phone, Printer, Smartphone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,7 @@ interface Props {
   more?: boolean;
 }
 
-export default function ProfileSection(props: Props) {
+export default function ContactDetails(props: Props) {
   const [mounted, setMounted] = useState(false);
   const usenavigate = useNavigate();
 
@@ -28,9 +28,10 @@ export default function ProfileSection(props: Props) {
               display: "flex",
               alignItems: "center",
               border: "",
-              background: "linear-gradient(90deg, darkgreen, #064E3B)",
+              background: "linear-gradient(90deg, orangered, brown)",
               borderRadius: "1rem",
-              height: "75svh",
+              height: "65svh",
+              width: "100%",
             }}
           >
             {/* <img
@@ -84,11 +85,11 @@ export default function ProfileSection(props: Props) {
                     }}
                   >
                     <img
-                      src="/cleaned_plant_int_3.jpg"
+                      src="/plant.jpg"
                       style={{
-                        objectPosition: "10",
                         borderRadius: "1rem",
                         objectFit: "cover",
+
                         width: "48ch",
                         height: "30ch",
                         boxShadow: "1px 1px 50px black",
@@ -120,7 +121,7 @@ export default function ProfileSection(props: Props) {
                         textDecorationColor: "crimson",
                       }}
                     >
-                      Why Choose Us
+                      Contact Details
                     </h1>
 
                     {/* <p className="desc" style={{ opacity: 0.75, border: "" }}>
@@ -150,10 +151,12 @@ export default function ProfileSection(props: Props) {
                         }}
                       >
                         <div style={{ border: "" }}>
-                          <Lightbulb color="orange" />
+                          <Phone color="orange" />
                         </div>
 
-                        <p>Commitment to Quality & Safety</p>
+                        <a style={{}} href="tel:+96826701512">
+                          +968 26701512
+                        </a>
                       </div>
 
                       <div
@@ -164,36 +167,36 @@ export default function ProfileSection(props: Props) {
                         }}
                       >
                         <div style={{ border: "" }}>
-                          <Lightbulb color="orange" width={"1.5rem"} />
+                          <Printer color="orange" width={"1.5rem"} />
                         </div>
 
-                        <p>Reliable supply chain and timely deliveries</p>
+                        <a href="tel:+96826701633">+968 26701633</a>
                       </div>
 
                       <div style={{ display: "flex", gap: "0.75rem" }}>
                         <div style={{ border: "" }}>
-                          <Lightbulb color="orange" width={"1.5rem"} />
+                          <Smartphone color="orange" width={"1.5rem"} />
                         </div>
 
-                        <p>Competitive Pricing</p>
+                        <a href="tel:+96898897837">+968 98897837</a>
                       </div>
 
                       <div style={{ display: "flex", gap: "0.75rem" }}>
                         <div style={{ border: "" }}>
-                          <Lightbulb color="orange" width={"1.5rem"} />
+                          <AtSign color="orange" width={"1.5rem"} />
                         </div>
-                        <p>
-                          Innovative solutions catering to unique requirements
-                        </p>
+                        <a href="mailto:sales@wahatoman.com">
+                          sales@wahatoman.com
+                        </a>
                       </div>
 
-                      <div style={{ display: "flex", gap: "0.75rem" }}>
+                      {/* <div style={{ display: "flex", gap: "0.75rem" }}>
                         <div style={{ border: "" }}>
                           <Lightbulb color="orange" width={"1.5rem"} />
                         </div>
 
                         <p>Dedicated Customer Support</p>
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* <a href="#projects" style={{position:"absolute", alignSelf:"center", marginTop:"22rem", display:"flex", flexFlow:"column", alignItems:"center"}}>
