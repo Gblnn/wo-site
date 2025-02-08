@@ -89,7 +89,6 @@ export default function ContactDetails(props: Props) {
                       style={{
                         borderRadius: "1rem",
                         objectFit: "cover",
-
                         width: "48ch",
                         height: "30ch",
                         boxShadow: "1px 1px 50px black",
@@ -148,13 +147,24 @@ export default function ContactDetails(props: Props) {
                           display: "flex",
                           gap: "0.75rem",
                           border: "",
+                          alignItems: "center",
                         }}
                       >
                         <div style={{ border: "" }}>
                           <Phone color="orange" />
                         </div>
 
-                        <a style={{}} href="tel:+96826701512">
+                        <a
+                          className="ghost"
+                          style={{
+                            background: "rgba(100 100 100/ 50%)",
+                            width: "fit-content",
+                            paddingLeft: "0.5rem",
+                            paddingRight: "0.5rem",
+                            border: "solid orange",
+                          }}
+                          href="tel:+96826701512"
+                        >
                           +968 26701512
                         </a>
                       </div>
@@ -164,28 +174,75 @@ export default function ContactDetails(props: Props) {
                           border: "",
                           display: "flex",
                           gap: "0.75rem",
+                          alignItems: "center",
                         }}
                       >
                         <div style={{ border: "" }}>
                           <Printer color="orange" width={"1.5rem"} />
                         </div>
 
-                        <a href="tel:+96826701633">+968 26701633</a>
+                        <a
+                          className="ghost"
+                          style={{
+                            background: "rgba(100 100 100/ 50%)",
+                            width: "fit-content",
+                            paddingLeft: "0.5rem",
+                            paddingRight: "0.5rem",
+                            border: "solid orange",
+                          }}
+                          href="tel:+96826701633"
+                        >
+                          +968 26701633
+                        </a>
                       </div>
 
-                      <div style={{ display: "flex", gap: "0.75rem" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "0.75rem",
+                          alignItems: "center",
+                        }}
+                      >
                         <div style={{ border: "" }}>
                           <Smartphone color="orange" width={"1.5rem"} />
                         </div>
 
-                        <a href="tel:+96898897837">+968 98897837</a>
+                        <a
+                          className="ghost"
+                          style={{
+                            background: "rgba(100 100 100/ 50%)",
+                            width: "fit-content",
+                            paddingLeft: "0.5rem",
+                            paddingRight: "0.5rem",
+                            border: "solid orange",
+                          }}
+                          href="tel:+96898897837"
+                        >
+                          +968 98897837
+                        </a>
                       </div>
 
-                      <div style={{ display: "flex", gap: "0.75rem" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          gap: "0.75rem",
+                          alignItems: "center",
+                        }}
+                      >
                         <div style={{ border: "" }}>
                           <AtSign color="orange" width={"1.5rem"} />
                         </div>
-                        <a href="mailto:sales@wahatoman.com">
+                        <a
+                          className="ghost"
+                          style={{
+                            background: "rgba(100 100 100/ 50%)",
+                            width: "fit-content",
+                            paddingLeft: "0.5rem",
+                            paddingRight: "0.5rem",
+                            border: "solid orange",
+                          }}
+                          href="mailto:sales@wahatoman.com"
+                        >
                           sales@wahatoman.com
                         </a>
                       </div>
