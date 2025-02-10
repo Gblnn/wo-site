@@ -5,7 +5,7 @@ import moment from "moment";
 export default function Footer() {
   return (
     <div
-      className="footer bg-emerald-900"
+      className="footer"
       style={{
         // boxShadow: "1px 1px 10px black",
         width: "100%",
@@ -17,6 +17,7 @@ export default function Footer() {
         flexFlow: "column",
         padding: "",
         alignItems: "center",
+        background: "linear-gradient(90deg,#064E3B, darkgreen)",
       }}
     >
       <div
