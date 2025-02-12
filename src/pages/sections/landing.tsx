@@ -52,7 +52,7 @@ export default function Landing() {
           Oman{" "}
         </p>
 
-        <p style={{ wordSpacing: "0.5rem", marginTop: "28rem", opacity: 1 }}>
+        <p style={{ wordSpacing: "0.5rem", marginTop: "28rem", zIndex: 1 }}>
           Manufacturing <b style={{ color: "orangered" }}>|</b> Supply{" "}
           <b style={{ color: "orangered" }}>| </b>
           Hydro-Testing
