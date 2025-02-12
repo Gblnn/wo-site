@@ -14,13 +14,14 @@ export default function Landing() {
           background: "black",
           border: "",
           top: 0,
+          flexFlow: "column",
         }}
       >
         <img
           alt="background"
           src="https://giffiles.alphacoders.com/222/222700.gif"
           width={"500rem"}
-          style={{ opacity: 0.5 }}
+          style={{ opacity: 0.5, position: "absolute" }}
         />
         <p
           style={{
@@ -49,6 +50,12 @@ export default function Landing() {
           </b>{" "}
           in {/* 🇴🇲 */}
           Oman{" "}
+        </p>
+
+        <p style={{ wordSpacing: "0.5rem", marginTop: "28rem", opacity: 1 }}>
+          Manufacturing <b style={{ color: "orangered" }}>|</b> Supply{" "}
+          <b style={{ color: "orangered" }}>| </b>
+          Hydro-Testing
         </p>
 
         <ChevronDown
