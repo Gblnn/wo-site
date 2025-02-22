@@ -66,8 +66,17 @@ const LoginPage = () => {
         <div className="absolute inset-0 backdrop-blur-[100px]" />
       </div>
 
-      {/* Login Card */}
-      <div className="max-w-md w-full p-8 bg-[#1a1a1a]/40 backdrop-blur-xl rounded-2xl shadow-2xl relative z-10 border border-white/[0.05]">
+      {/* Login Card with Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.9,
+          ease: [0.16, 1, 0.3, 1],
+          opacity: { duration: 0.5 },
+        }}
+        className="max-w-md w-full p-8 bg-[#1a1a1a]/40 backdrop-blur-xl rounded-2xl shadow-2xl relative z-10 border border-white/[0.05]"
+      >
         <div className="mb-8">
           <h2 className="text-4xl font-bold text-white tracking-tight">
             LOGIN
@@ -179,7 +188,7 @@ const LoginPage = () => {
             </div>
           </div>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };

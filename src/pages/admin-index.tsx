@@ -345,13 +345,15 @@ const AdminIndex = () => {
                 {/* Dropdown Menu */}
                 {showUserMenu && (
                   <div
-                    className="absolute right-0 mt-2 w-64 py-2 bg-[#1a1a1a]/90 backdrop-blur-xl rounded-md shadow-xl z-50"
+                    className="absolute right-0 mt-2 w-64 py-2 bg-[#1a1a1a]/95 rounded-md shadow-xl z-50 border border-white/[0.05]"
                     style={{
                       animation: "fadeScale 0.2s ease-out forwards",
                       transformOrigin: "top right",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
                     }}
                   >
-                    <div className="px-4 py-3 text-sm border-b border-gray-700">
+                    <div className="px-4 py-3 text-sm border-b border-white/[0.05]">
                       <div className="flex items-center gap-3">
                         <div className="flex-shrink-0 aspect-square w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center text-white font-medium">
                           {user?.email?.[0].toUpperCase() || (
