@@ -1,7 +1,11 @@
 import { ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-export default function Landing() {
+interface Props {
+  editMode?: boolean;
+}
+
+export default function Landing(props: Props) {
   const usenavigate = useNavigate();
   return (
     <>
@@ -12,7 +16,8 @@ export default function Landing() {
           alignItems: "center",
           height: "100svh",
           background: "black",
-          border: "",
+          borderBottom: props.editMode ? "solid orangered" : "",
+          zIndex: "10",
           top: 0,
           flexFlow: "column",
         }}
@@ -25,7 +30,7 @@ export default function Landing() {
         />
         <p
           style={{
-            border: "",
+            borderRadius: "1rem",
             textAlign: "center",
             position: "absolute",
             fontSize: "3rem",
@@ -52,11 +57,19 @@ export default function Landing() {
           Oman{" "}
         </p>
 
-        <p style={{ wordSpacing: "0.5rem", marginTop: "28rem", zIndex: 1 }}>
-          Manufacturing <b style={{ color: "orangered" }}>|</b> Supply{" "}
-          <b style={{ color: "orangered" }}>| </b>
-          Hydro-Testing
-        </p>
+        <div
+          style={{
+            marginTop: "28rem",
+            border: props.editMode ? "solid" : "",
+            padding: "0.5rem",
+          }}
+        >
+          <p style={{ wordSpacing: "0.5rem", zIndex: 1 }}>
+            Manufacturing <b style={{ color: "orangered" }}>|</b> Supply{" "}
+            <b style={{ color: "orangered" }}>| </b>
+            Hydro-Testing
+          </p>
+        </div>
 
         <ChevronDown
           className="animate-bounce"
@@ -65,6 +78,19 @@ export default function Landing() {
           color="orangered"
           style={{ position: "absolute", marginTop: "22rem" }}
         />
+        <p
+          style={{
+            display: props.editMode ? "flex" : "none",
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+            background: "orangered",
+          }}
+        >
+          Landing Section
+        </p>
       </div>
     </>
   );

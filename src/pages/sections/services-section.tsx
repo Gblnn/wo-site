@@ -14,7 +14,11 @@ import { useState } from "react";
 import ServiceBox from "../../components/service-box";
 import { useNavigate } from "react-router-dom";
 
-export default function ServicesSection() {
+interface Props {
+  editMode?: boolean;
+}
+
+export default function ServicesSection(props: Props) {
   const [expand, setExpand] = useState(true);
   const usenavigate = useNavigate();
 
@@ -217,7 +221,8 @@ export default function ServicesSection() {
                   boxShadow: "1px 1px 10px rgba(0 0 0/ 10%)",
                 }}
               >
-                See All <ChevronRight width={"1rem"} color="orangered" />
+                {props.editMode ? "Update Product Catalogue" : "See All"}{" "}
+                <ChevronRight width={"1rem"} color="orangered" />
               </Button>
             </div>
 
