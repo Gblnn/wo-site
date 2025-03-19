@@ -6,231 +6,149 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import products from "@/products";
+import { useState, useEffect } from "react";
+import { siteContent } from "@/config/content";
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
-import { Asterisk, ChevronDown, ChevronRight, ChevronUp } from "lucide-react";
-import { useState } from "react";
-import ServiceBox from "../../components/service-box";
+import { ChevronRight } from "lucide-react";
+import ServiceBox from "@/components/service-box";
 import { useNavigate } from "react-router-dom";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "@/firebase/config";
 
 interface Props {
   editMode?: boolean;
 }
 
-export default function ServicesSection(props: Props) {
-  const [expand, setExpand] = useState(true);
-  const usenavigate = useNavigate();
+interface Product {
+  id: string;
+  name: string;
+  src: string;
+}
+
+export default function ServicesSection({ editMode }: Props) {
+  const navigate = useNavigate();
+  const [products, setProducts] = useState<Product[]>(siteContent.products);
+  const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const querySnapshot = await getDocs(collection(db, "product-list"));
+        const productsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as Omit<Product, "id">),
+        }));
+        if (productsData.length > 0) {
+          setProducts(productsData.slice(0, 4));
+        }
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.25 }}
-      >
-        <div
-          id="services"
-          style={{
-            display: "flex",
-            height: "",
-            paddingTop: "4rem",
-            boxShadow: "",
-            background: "rgba(100 100 100/ 10%)",
-            border: "",
-          }}
-        >
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay: 0 }}
+    >
+      <div className="w-full flex justify-center items-center p-6">
+        <div className="max-w-[80rem] w-full flex flex-col gap-6">
+          <br />
           <div
-            style={{
-              margin: "1.5rem",
-              marginTop: "",
-              marginBottom: "",
-              border: "",
-              width: "100%",
-            }}
+            style={{ border: "" }}
+            className="flex justify-center items-center"
           >
-            <h1
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: 500,
-                display: "flex",
-                gap: "0.5rem",
-                alignItems: "center",
-                marginLeft: "",
-                justifyContent: "center",
-                zIndex: 10,
-              }}
-            >
-              <Asterisk
-                className="animate-pulse"
-                color="orangered"
-                strokeWidth={"0.2rem"}
-                width={"2rem"}
-                height={"2rem"}
-              />
-              Our Products
-            </h1>
+            <h2 className="text-2xl font-semibold tracking-wide">
+              Product Catalogue
+            </h2>
+          </div>
+          <br />
 
-            <div
-              style={{
-                border: "",
-                width: "100%",
-                display: "flex",
-                marginTop: "2rem",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                gap: "2rem",
-              }}
-            >
+          {isMobile ? (
+            // Grid view for mobile
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {products.map((product) => (
+                <div key={product.id} className="flex justify-center">
+                  <ServiceBox img={product.src} title={product.name} centered />
+                </div>
+              ))}
+            </div>
+          ) : (
+            // Carousel for desktop
+            <div className="relative w-[85%] mx-auto">
               <Carousel
+                opts={{
+                  align: "center",
+                  loop: true,
+                  skipSnaps: false,
+                  slidesToScroll: 1,
+                }}
                 plugins={[
                   Autoplay({
-                    delay: 4000,
+                    delay: 2000,
                   }),
                 ]}
-                className="carousel"
-                style={{ border: "", padding: "", width: "105ch" }}
+                className="w-full"
               >
-                <CarouselPrevious style={{}} />
-                <CarouselContent
-                  className="hover:cursor-grab active:cursor-grabbing"
-                  style={{
-                    gap: "0rem",
-                    width: "auto",
-                    border: "",
-                    padding: "1rem",
-                  }}
-                >
-                  {products.map((e: any) => (
-                    <CarouselItem
-                      key={e.id}
-                      className="sm:basis-1/1 lg:basis-1/3"
-                    >
-                      <ServiceBox
-                        key={e.id}
-                        // onClick={() => usenavigate("/civil-engineering")}
-                        title={e.name}
-                        desc=""
-                        icon={
-                          // <DraftingCompass width={"2.5rem"} height={"2.5rem"} />
-                          <img
-                            src={e.src}
-                            style={{ height: "80%", objectFit: "cover" }}
-                            alt={e.name}
-                          />
-                        }
-                      />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselNext />
-              </Carousel>
-
-              <div
-                className="sm-services"
-                style={{
-                  border: "",
-                  width: "",
-                  marginTop: "2rem",
-                  justifyContent: "center",
-                  flexWrap: "wrap",
-                  gap: "2rem",
-                }}
-              >
-                {products.slice(0, 4).map((e: any) => (
-                  <ServiceBox
-                    key={e.id}
-                    // onClick={() => usenavigate("/civil-engineering")}
-                    title={e.name}
-                    icon={
-                      // <DraftingCompass width={"2.5rem"} height={"2.5rem"} />
-                      <img
-                        src={e.src}
-                        style={{
-                          height: "100%",
-                          objectFit: "contain",
-                          border: "",
-                          width: "80%",
-                        }}
-                        alt={e.name}
-                      />
-                    }
-                  />
-                ))}
-              </div>
-
-              <div
-                className="sm-services"
-                style={{ width: "100%", justifyContent: "center" }}
-              >
-                <Button
-                  onClick={() => {
-                    setExpand(!expand);
-                  }}
-                  variant={"ghost"}
-                  style={{
-                    width: "32ch",
-                    display: "none",
-                    gap: "0.5rem",
-                    alignItems: "center",
-                    alignSelf: "center",
-                    background: "rgba(100 100 100/ 10%)",
-                    boxShadow: "1px 1px 10px rgba(0 0 0/ 10%)",
-                  }}
-                >
-                  {expand ? (
-                    <>
-                      Collapse
-                      <ChevronUp width={"1rem"} color="crimson" />
-                    </>
+                <CarouselContent className="-ml-1">
+                  {loading ? (
+                    <div className="flex justify-center items-center h-32 w-full">
+                      <div className="w-8 h-8 border-4 border-orangered border-t-transparent rounded-full animate-spin" />
+                    </div>
                   ) : (
-                    <>
-                      Show More
-                      <ChevronDown width={"1rem"} color="crimson" />
-                    </>
+                    products.map((product) => (
+                      <CarouselItem
+                        key={product.id}
+                        className="pl-1 basis-full md:basis-1/2 lg:basis-1/3"
+                      >
+                        <div className="flex justify-center w-[320px] mx-auto">
+                          <ServiceBox
+                            img={product.src}
+                            title={product.name}
+                            centered
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))
                   )}
-                </Button>
-              </div>
+                </CarouselContent>
+                <CarouselPrevious className="absolute -left-12 top-1/2 transform -translate-y-1/2" />
+                <CarouselNext className="absolute -right-12 top-1/2 transform -translate-y-1/2" />
+              </Carousel>
             </div>
+          )}
 
-            {/* <a href="#page" className="arrow" style={{marginTop:""}}>
-                                <button >
-                                    <ChevronDown color="crimson" width={"2.5rem"} height={"2.5rem"}/>
-                                </button>
-                            </a> */}
+          <br />
 
-            <br />
-            <br />
-            <div
-              style={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "center",
-              }}
+          <div className="w-full flex justify-center">
+            <Button
+              style={{ width: "28ch" }}
+              onClick={() => navigate(editMode ? "/product-edit" : "/products")}
+              className="bg-[rgba(100,100,100,0.1)] hover:bg-[rgba(100,100,100,0.2)] shadow-lg transition-all duration-200 flex items-center gap-2"
             >
-              <Button
-                onClick={() => usenavigate("/products")}
-                variant={"ghost"}
-                style={{
-                  width: "32ch",
-                  display: "flex",
-                  gap: "0.5rem",
-                  alignItems: "center",
-                  alignSelf: "center",
-                  background: "rgba(100 100 100/ 10%)",
-                  boxShadow: "1px 1px 10px rgba(0 0 0/ 10%)",
-                }}
-              >
-                {props.editMode ? "Update Product Catalogue" : "See All"}{" "}
-                <ChevronRight width={"1rem"} color="orangered" />
-              </Button>
-            </div>
-
-            <br />
-            <br />
+              {editMode ? "Update Product Catalogue" : "See All"}
+              <ChevronRight color="orangered" className="w-4 h-4 " />
+            </Button>
           </div>
         </div>
-      </motion.div>
-    </>
+      </div>
+    </motion.div>
   );
 }

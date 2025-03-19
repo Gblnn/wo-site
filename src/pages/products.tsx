@@ -1,154 +1,115 @@
-import { Button } from "@/components/ui/button";
-import products from "@/products";
 import { motion } from "framer-motion";
-import { Asterisk, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
-import ServiceBox from "../components/service-box";
+import { siteContent } from "@/config/content";
+import PageTransition from "@/components/page-transition";
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase/config";
+import { Asterisk } from "lucide-react";
 
-export default function ServicesSection() {
-  const [expand, setExpand] = useState(true);
+interface Product {
+  id: string;
+  name: string;
+  src: string;
+}
+
+const Products = () => {
+  const [products, setProducts] = useState<Product[]>(siteContent.products);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const querySnapshot = await getDocs(collection(db, "product-list"));
+        const productsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as Omit<Product, "id">),
+        }));
+        if (productsData.length > 0) {
+          setProducts(productsData);
+        }
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.25 }}
-      >
-        <div
-          id="services"
-          style={{
-            display: "flex",
-            height: "",
-            paddingTop: "4rem",
-            boxShadow: "",
-            background: "",
-          }}
-        >
-          <div
-            style={{
-              margin: "1.5rem",
-              marginTop: "5rem",
-              marginBottom: "8rem",
-              border: "",
-              width: "100%",
-            }}
-          >
-            <h1
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: 500,
-                display: "flex",
-                gap: "0.5rem",
-                alignItems: "center",
-                marginLeft: "",
-                justifyContent: "center",
-                zIndex: 10,
-              }}
-            >
-              <Asterisk
-                color="orangered"
-                strokeWidth={"0.2rem"}
-                width={"2rem"}
-                height={"2rem"}
-              />
-              Our Products
-            </h1>
+    <PageTransition>
+      <div className="min-h-screen bg-black text-white pt-24">
+        {/* Background Elements */}
+        <div className="fixed inset-0 overflow-hidden">
+          <div className="absolute w-[800px] h-[800px] bg-orange-600/30 rounded-full blur-[120px] -top-40 -right-20 animate-pulse" />
+          <div className="absolute w-[600px] h-[600px] bg-orange-900/30 rounded-full blur-[120px] -bottom-20 -left-40" />
+          <div className="absolute inset-0 backdrop-blur-[60px]" />
+        </div>
 
+        {/* Main Content */}
+        <main className="relative z-10 p-6">
+          <div className="max-w-7xl mx-auto">
             <div
               style={{
                 border: "",
-                width: "100%",
                 display: "flex",
-                marginTop: "2rem",
+                alignItems: "center",
                 justifyContent: "center",
-                flexWrap: "wrap",
-                gap: "2rem",
               }}
+              className="text-center mb-12 mt-4"
             >
-              <div
-                className=""
-                style={{
-                  display: "flex",
-                  border: "",
-                  width: "",
-                  marginTop: "2rem",
-                  justifyContent: "center",
-                  flexWrap: "wrap",
-                  gap: "2rem",
-                }}
-              >
-                {products.map((e: any) => (
-                  <ServiceBox
-                    key={e.id}
-                    // onClick={() => usenavigate("/civil-engineering")}
-                    title={e.name}
-                    icon={
-                      // <DraftingCompass width={"2.5rem"} height={"2.5rem"} />
-                      <img
-                        src={e.src}
-                        style={{
-                          height: "100%",
-                          objectFit: "contain",
-                          border: "",
-                          width: "80%",
-                        }}
-                        alt="Civil works"
-                      />
-                    }
-                  />
-                ))}
-              </div>
-
-              <div
-                className="sm-services"
-                style={{ width: "100%", justifyContent: "center" }}
-              >
-                <Button
-                  onClick={() => {
-                    setExpand(!expand);
-                  }}
-                  variant={"ghost"}
-                  style={{
-                    width: "32ch",
-                    display: "none",
-                    gap: "0.5rem",
-                    alignItems: "center",
-                    alignSelf: "center",
-                    background: "rgba(100 100 100/ 10%)",
-                    boxShadow: "1px 1px 10px rgba(0 0 0/ 10%)",
-                  }}
-                >
-                  {expand ? (
-                    <>
-                      Collapse
-                      <ChevronUp width={"1rem"} color="crimson" />
-                    </>
-                  ) : (
-                    <>
-                      Show More
-                      <ChevronDown width={"1rem"} color="crimson" />
-                    </>
-                  )}
-                </Button>
-              </div>
+              <Asterisk color="orangered" height={"3rem"} width={"3rem"} />
+              <h1 className="text-3xl font-medium">Our Products</h1>
             </div>
 
-            {/* <a href="#page" className="arrow" style={{marginTop:""}}>
-                                <button >
-                                    <ChevronDown color="crimson" width={"2.5rem"} height={"2.5rem"}/>
-                                </button>
-                            </a> */}
-
-            {/* <br/><br/>
-                <div style={{display:"flex", width:"100%", justifyContent:"center"}}>
-                <Button onClick={()=>usenavigate("/projects")} variant={"ghost"} style={{width:"32ch", display:"flex", gap:"0.5rem", alignItems:"center", alignSelf:"center", background:"rgba(100 100 100/ 10%)", boxShadow:"1px 1px 10px rgba(0 0 0/ 10%)"}}>See more Projects <ChevronRight width={"1rem"} color="crimson"/></Button>
-                </div>
-                
-                <br/><br/> */}
+            {loading ? (
+              <div className="flex justify-center items-center min-h-[60vh]">
+                <div className="w-8 h-8 border-4 border-orangered border-t-transparent rounded-full animate-spin" />
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-24">
+                {products.map((product) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="glass-card hover:scale-[1.02] transition-all duration-300"
+                  >
+                    <div className="relative aspect-[4/3] bg-black/20 backdrop-blur-sm rounded-t-xl overflow-hidden p-6 flex items-center justify-center">
+                      <img
+                        src={product.src}
+                        alt={product.name}
+                        className="w-[80%] h-[80%] object-contain mix-blend-lighten"
+                      />
+                    </div>
+                    <div className="p-6 border-t border-white/10">
+                      <h3 className="text-xl font-semibold text-center">
+                        {product.name}
+                      </h3>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      </motion.div>
-    </>
+        </main>
+      </div>
+
+      <style>{`
+        .glass-card {
+          background: rgba(20, 20, 20, 0.4);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-radius: 0.75rem;
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+      `}</style>
+    </PageTransition>
   );
-}
+};
+
+export default Products;

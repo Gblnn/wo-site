@@ -1,19 +1,23 @@
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
+import { motion } from "framer-motion";
 import {
   Globe,
   LayoutDashboard,
   LogOut,
   Plus,
-  Settings,
   User as UserIcon,
   Users,
+  Phone,
+  Edit,
 } from "lucide-react";
+import moment from "moment";
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import PageTransition from "../components/page-transition";
-import { auth } from "../firebase/config";
-import { motion } from "framer-motion";
 import Tooltip from "../components/Tooltip";
+import { auth, db } from "../firebase/config";
+import ContactInfoDialog from "@/components/ContactInfoDialog";
 
 const styles = `
   @keyframes fadeScale {
@@ -206,11 +210,23 @@ const itemVariants = {
   },
 };
 
+// Add this interface
+interface Activity {
+  id: string;
+  action: string;
+  user: string;
+  timestamp: Date;
+  status: string;
+}
+
 const AdminIndex = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [loadingActivities, setLoadingActivities] = useState(true);
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -238,6 +254,32 @@ const AdminIndex = () => {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        setLoadingActivities(true);
+        const q = query(
+          collection(db, "activities"),
+          orderBy("timestamp", "desc"),
+          limit(5)
+        );
+        const querySnapshot = await getDocs(q);
+        const activitiesData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+          timestamp: doc.data().timestamp.toDate(),
+        })) as Activity[];
+        setActivities(activitiesData);
+      } catch (err) {
+        console.error("Error fetching activities:", err);
+      } finally {
+        setLoadingActivities(false);
+      }
+    };
+
+    fetchActivities();
   }, []);
 
   const handleSignOut = async () => {
@@ -408,23 +450,6 @@ const AdminIndex = () => {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {/* Users Card */}
-                  <div className="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="p-3 bg-orange-600/10 backdrop-blur-md rounded-xl">
-                        <Users className="w-6 h-6 text-orange-500" />
-                      </div>
-                      <h2 className="text-xl font-bold">Users</h2>
-                    </div>
-                    <p className="text-gray-400 flex-grow">
-                      Manage your users and permissions
-                    </p>
-                    <Tooltip content="Manage user accounts and permissions">
-                      <GradientButton className={buttonClass}>
-                        <UserIcon className="w-4 h-4" />
-                        View Users
-                      </GradientButton>
-                    </Tooltip>
-                  </div>
 
                   {/* Content Card */}
                   <div className="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col">
@@ -454,7 +479,7 @@ const AdminIndex = () => {
                   </div>
 
                   {/* Settings Card */}
-                  <div className="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col">
+                  {/* <div className="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="p-3 bg-orange-600/10 backdrop-blur-md rounded-xl">
                         <Settings className="w-6 h-6 text-orange-500" />
@@ -468,6 +493,50 @@ const AdminIndex = () => {
                       <GradientButton className={buttonClass}>
                         <Settings className="w-4 h-4" />
                         View Settings
+                      </GradientButton>
+                    </Tooltip>
+                  </div> */}
+
+                  {/* Clients Card */}
+                  <div className="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-3 bg-orange-600/10 backdrop-blur-md rounded-xl">
+                        <Users className="w-6 h-6 text-orange-500" />
+                      </div>
+                      <h2 className="text-xl font-bold">Clients</h2>
+                    </div>
+                    <p className="text-gray-400 flex-grow">
+                      Manage your client list and information
+                    </p>
+                    <Tooltip content="Edit client information">
+                      <GradientButton
+                        className={buttonClass}
+                        onClick={() => navigate("/client-edit")}
+                      >
+                        <Plus className="w-4 h-4" />
+                        Manage Clients
+                      </GradientButton>
+                    </Tooltip>
+                  </div>
+
+                  {/* Contact Info Card */}
+                  <div className="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-3 bg-orange-600/10 backdrop-blur-md rounded-xl">
+                        <Phone className="w-6 h-6 text-orange-500" />
+                      </div>
+                      <h2 className="text-xl font-bold">Contact Info</h2>
+                    </div>
+                    <p className="text-gray-400 flex-grow">
+                      Update contact information and address
+                    </p>
+                    <Tooltip content="Edit contact information">
+                      <GradientButton
+                        className={buttonClass}
+                        onClick={() => setIsContactDialogOpen(true)}
+                      >
+                        <Edit className="w-4 h-4" />
+                        Update Contact Info
                       </GradientButton>
                     </Tooltip>
                   </div>
@@ -484,26 +553,49 @@ const AdminIndex = () => {
                         <tr>
                           <th className="px-6 py-3 text-left">Action</th>
                           <th className="px-6 py-3 text-left">User</th>
-                          <th className="px-6 py-3 text-left">Date</th>
+                          <th className="px-6 py-3 text-left">Time</th>
                           <th className="px-6 py-3 text-left">Status</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="border-t border-gray-700">
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            Content Updated
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            admin@example.com
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            2024-03-20
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <GradientBadge>Completed</GradientBadge>
-                          </td>
-                        </tr>
-                        {/* Add more rows as needed */}
+                        {loadingActivities ? (
+                          <tr>
+                            <td colSpan={4} className="px-6 py-4 text-center">
+                              <div className="flex justify-center">
+                                <div className="w-6 h-6 border-2 border-orange-600 border-t-transparent rounded-full animate-spin"></div>
+                              </div>
+                            </td>
+                          </tr>
+                        ) : activities.length === 0 ? (
+                          <tr>
+                            <td
+                              colSpan={4}
+                              className="px-6 py-4 text-center text-gray-400"
+                            >
+                              No recent activity
+                            </td>
+                          </tr>
+                        ) : (
+                          activities.map((activity) => (
+                            <tr
+                              key={activity.id}
+                              className="border-t border-gray-700"
+                            >
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {activity.action}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {activity.user}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {moment(activity.timestamp).fromNow()}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <GradientBadge>{activity.status}</GradientBadge>
+                              </td>
+                            </tr>
+                          ))
+                        )}
                       </tbody>
                     </table>
                   </div>
@@ -512,6 +604,11 @@ const AdminIndex = () => {
             </motion.div>
           </main>
         </div>
+
+        <ContactInfoDialog
+          isOpen={isContactDialogOpen}
+          onClose={() => setIsContactDialogOpen(false)}
+        />
       </>
     </PageTransition>
   );

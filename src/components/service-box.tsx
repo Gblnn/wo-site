@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 
 interface Props {
   img?: string;
-  icon?: any;
-  title?: string;
+  icon?: React.ReactNode;
+  title: string;
   desc?: string;
-  onClick?: any;
   centered?: boolean;
+  onClick?: () => void;
 }
 
 export default function ServiceBox(props: Props) {
@@ -27,14 +27,15 @@ export default function ServiceBox(props: Props) {
           padding: "0.5rem",
           background: "rgba(100 100 100/ 10%)",
           boxShadow: "1px 1px 10px rgba(0 0 0/ 50%)",
-          width: "32ch",
+          width: "320px",
+          height: "320px",
           cursor: "pointer",
         }}
       >
         <div
           style={{
             width: "100%",
-            height: "21ch",
+            height: "220px",
             background: "none",
             borderTopRightRadius: "1rem",
             borderTopLeftRadius: "1rem",
@@ -42,12 +43,31 @@ export default function ServiceBox(props: Props) {
             justifyContent: "center",
             alignItems: props.centered ? "center" : "flex-end",
             color: "crimson",
+            overflow: "hidden",
           }}
         >
-          {props.icon}
+          {props.img ? (
+            <img
+              src={props.img}
+              alt={props.title}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
+          ) : (
+            props.icon
+          )}
         </div>
 
-        <div style={{ display: "flex", border: "", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "0.5rem",
+          }}
+        >
           <hr
             style={{
               boxShadow: "1px 1px 10px black",
@@ -60,56 +80,14 @@ export default function ServiceBox(props: Props) {
         </div>
 
         <div
-          className="project-label"
           style={{
-            border: "",
-            borderBottomRightRadius: "1rem",
-            borderBottomLeftRadius: "1rem",
-            color: "white",
-            background: "",
-            height: "100%",
-            width: "100%",
+            padding: "0.5rem",
+            textAlign: "center",
+            fontSize: "1rem",
+            fontWeight: 500,
           }}
         >
-          <div
-            id="body"
-            style={{
-              margin: "1.5rem",
-              display: "flex",
-              flexFlow: "column",
-              gap: "0.5rem",
-              border: "",
-              height: "2.5rem",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "1.15rem",
-                fontWeight: "600",
-                display: "flex",
-                gap: "0.5rem",
-                textShadow: "1px 1px 20px black",
-              }}
-            >
-              {props.title}
-            </p>
-            <p
-              style={{
-                fontSize: "0.8rem",
-                opacity: 0.65,
-                letterSpacing: "0.05rem",
-                display: "flex",
-                border: "",
-                height: "100%",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {props.desc}
-            </p>
-          </div>
+          {props.title}
         </div>
       </div>
     </motion.div>
