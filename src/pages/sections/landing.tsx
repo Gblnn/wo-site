@@ -1,10 +1,8 @@
+import { siteContent } from "@/config/content";
+import { db } from "@/firebase/config";
+import { doc, getDoc } from "firebase/firestore";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/firebase/config";
-import { siteContent } from "@/config/content";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 
 interface Props {
   editMode?: boolean;
@@ -13,7 +11,6 @@ interface Props {
 export default function Landing({ editMode }: Props) {
   const [content, setContent] = useState(siteContent.landing);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchContent = async () => {
