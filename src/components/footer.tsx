@@ -111,7 +111,7 @@ export default function Footer() {
                   >
                     26701512
                   </a>
-                  Tel :
+
                   <a
                     href="tel:26701633"
                     className="ghost"
