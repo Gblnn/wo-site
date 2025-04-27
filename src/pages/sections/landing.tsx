@@ -46,6 +46,14 @@ export default function Landing({ editMode }: Props) {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-black relative">
+      <Button
+        variant={"link"}
+        style={{ marginTop: "6rem" }}
+        onClick={() => navigate("/login")}
+        className="absolute top-4 right-4  transition-all duration-200 z-10"
+      >
+        LOGIN
+      </Button>
       <img
         alt="background"
         src={content.backgroundImage}
