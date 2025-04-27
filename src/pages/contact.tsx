@@ -14,11 +14,11 @@ export default function ContactUs() {
 
   return (
     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
-      <div style={{ zIndex: "-1" }} className="fixed inset-0 overflow-hidden">
+      {/* <div style={{ zIndex: "-1" }} className="fixed inset-0 overflow-hidden">
         <div className="absolute w-[800px] h-[800px] bg-orange-600/30 rounded-full blur-[120px] -top-40 -right-20 animate-pulse" />
         <div className="absolute w-[600px] h-[600px] bg-orange-900/30 rounded-full blur-[120px] -bottom-20 -left-40" />
         <div className="absolute inset-0 backdrop-blur-[60px]" />
-      </div>
+      </div> */}
       <div
         id="projects"
         className="page"
@@ -231,7 +231,7 @@ export default function ContactUs() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3296.749652572543!2d56.57714957482646!3d24.430880162313553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e8b49ea68f4e8c9%3A0xe11b51cf20723302!2sWahat%20Oman%20Industrial%20Gases%20L.L.C!5e1!3m2!1sen!2som!4v1738997255649!5m2!1sen!2som"
                 width="100%"
                 height="450"
-                style={{ border: "0", borderRadius: "1rem" }}
+                style={{ border: "0", borderRadius: "1rem", zIndex: "-1" }}
                 loading="lazy"
               ></iframe>
             </div>

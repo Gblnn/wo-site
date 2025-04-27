@@ -25,7 +25,7 @@ export default function ServiceBox(props: Props) {
           display: "flex",
           flexFlow: "column",
           padding: "0.5rem",
-          background: "rgba(100 100 100/ 10%)",
+          background: "rgba(20 20 20/ 40%)",
           boxShadow: "1px 1px 10px rgba(0 0 0/ 50%)",
           width: "32ch",
           cursor: "pointer",
