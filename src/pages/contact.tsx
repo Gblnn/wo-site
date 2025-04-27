@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import {
-  ChevronRight,
   Mail,
   Mails,
   MailsIcon,
@@ -93,7 +92,8 @@ export default function ContactUs() {
                   }}
                 >
                   <MailsIcon color="orangered" width={"1rem"} />
-                  Sohar Industrial Estate, Phase 5, Road No : 508
+                  Suhar Industrial Estate, Phase 5, Way : 508
+                  {/* Way No : 508 */}
                 </p>
 
                 <p

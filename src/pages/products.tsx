@@ -10,6 +10,11 @@ export default function ServicesSection() {
 
   return (
     <>
+      <div style={{ zIndex: "-1" }} className="fixed inset-0 overflow-hidden">
+        <div className="absolute w-[800px] h-[800px] bg-orange-600/30 rounded-full blur-[120px] -top-40 -right-20 animate-pulse" />
+        <div className="absolute w-[600px] h-[600px] bg-orange-900/30 rounded-full blur-[120px] -bottom-20 -left-40" />
+        <div className="absolute inset-0 backdrop-blur-[60px]" />
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
