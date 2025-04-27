@@ -135,7 +135,7 @@ export default function Header() {
           position: "fixed",
           bottom: 0,
           justifyContent: "center",
-          zIndex: 100,
+          zIndex: 10,
           fontSize: "1rem",
           height: "4.5rem",
           alignItems: "center",
