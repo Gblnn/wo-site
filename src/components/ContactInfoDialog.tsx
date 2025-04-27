@@ -24,12 +24,14 @@ const ContactInfoDialog = ({ isOpen, onClose }: ContactInfoDialogProps) => {
     address:
       "P.O. Box: 162, PC: 325, Phase No : 5, Suhar Industrial City, Way No : 508 Sultanate of Oman",
   });
+  const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchContent = async () => {
       try {
+        setLoading(true);
         setError(null);
         const docRef = doc(db, "site-content", "contact");
         const docSnap = await getDoc(docRef);
@@ -40,6 +42,8 @@ const ContactInfoDialog = ({ isOpen, onClose }: ContactInfoDialogProps) => {
       } catch (err) {
         setError("Failed to load content. Please try again.");
         console.error("Error fetching content:", err);
+      } finally {
+        setLoading(false);
       }
     };
 

@@ -1,7 +1,6 @@
-import { db } from "@/firebase/config";
-import { auth } from "@/firebase/config";
-import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { db, auth } from "@/firebase/config";
+import { doc, getDoc, setDoc, addDoc, collection } from "firebase/firestore";
 
 interface LandingContentDialogProps {
   isOpen: boolean;
@@ -74,7 +73,7 @@ const LandingContentDialog = ({
       await setDoc(docRef, content, { merge: true });
       await logActivity(
         "Updated Landing Content",
-        auth.currentUser?.email || "Unknown User"
+        user?.email || "Unknown User"
       );
       onClose();
     } catch (err) {
