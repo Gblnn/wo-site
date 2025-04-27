@@ -226,7 +226,7 @@ p {
 }
 
 .ghost {
-  background: rgba(100 100 100/ 10%);
+  background: rgba(100 100 100/ 20%);
   padding: 0.2rem;
   width: 5rem;
   text-align: center;

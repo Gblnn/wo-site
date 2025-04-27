@@ -14,6 +14,11 @@ export default function ContactUs() {
 
   return (
     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
+      <div style={{ zIndex: "-1" }} className="fixed inset-0 overflow-hidden">
+        <div className="absolute w-[800px] h-[800px] bg-orange-600/30 rounded-full blur-[120px] -top-40 -right-20 animate-pulse" />
+        <div className="absolute w-[600px] h-[600px] bg-orange-900/30 rounded-full blur-[120px] -bottom-20 -left-40" />
+        <div className="absolute inset-0 backdrop-blur-[60px]" />
+      </div>
       <div
         id="projects"
         className="page"
@@ -69,10 +74,11 @@ export default function ContactUs() {
                 style={{
                   display: "flex",
                   flexFlow: "column",
-                  padding: "1rem",
+                  padding: "1.25rem",
                   border: "",
                   borderRadius: "0.5rem",
-                  background: "rgba(100 100 100/ 5%)",
+                  background: "rgba(100 100 100/ 10%)",
+                  backdropFilter: "blur(16px)",
                   gap: "0.5rem",
                   paddingLeft: "1.25rem",
                 }}
