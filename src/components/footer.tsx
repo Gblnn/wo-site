@@ -292,12 +292,29 @@ export default function Footer() {
       >
         <div
           className="items-container"
-          style={{ display: "flex", border: "", justifyContent: "center" }}
+          style={{
+            display: "flex",
+            border: "",
+            justifyContent: "center",
+            gap: "0.5rem",
+          }}
         >
           <p>
             Copyrights Reserved {String(moment().year())} &copy;{" "}
-            <strong style={{ fontWeight: 500 }}> WAHAT OMAN </strong>
+            <strong style={{ fontWeight: 600 }}> WAHAT OMAN </strong>
           </p>
+          <p>|</p>
+          <a
+            target="_blank"
+            href="https://gblnn-portfolio.netlify.app"
+            style={{
+              fontSize: "0.8  rem",
+              fontWeight: "600",
+              color: "orange",
+            }}
+          >
+            @Gblnn
+          </a>
         </div>
       </div>
     </div>

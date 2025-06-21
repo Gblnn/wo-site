@@ -231,7 +231,7 @@ export default function ContactUs() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3296.749652572543!2d56.57714957482646!3d24.430880162313553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e8b49ea68f4e8c9%3A0xe11b51cf20723302!2sWahat%20Oman%20Industrial%20Gases%20L.L.C!5e1!3m2!1sen!2som!4v1738997255649!5m2!1sen!2som"
                 width="100%"
                 height="450"
-                style={{ border: "0", borderRadius: "1rem", zIndex: "-1" }}
+                style={{ border: "0", borderRadius: "1rem", zIndex: "1" }}
                 loading="lazy"
               ></iframe>
             </div>
